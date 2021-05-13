@@ -15,5 +15,12 @@ fn get_mobile_stock() ?structs.MobileStock {
 
 pub fn get_all_products() ?[]structs.Product {
 	stock := get_mobile_stock() ?
-	return stock.products_and_categories.skate
+
+	all_products := []structs.Product{}
+
+	for _, category_products in stock.products_and_categories {
+		all_products << category_products
+	}
+
+	return stock.products_and_categories.jackets
 }
