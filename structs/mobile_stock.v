@@ -3,7 +3,7 @@ module structs
 pub struct MobileStockProduct {
 pub:
 	name            string
-	id              i8
+	id              int
 	image_url       string
 	image_url_hi    string
 	price           i8

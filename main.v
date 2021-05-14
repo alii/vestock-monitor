@@ -10,15 +10,20 @@ const (
 println(term.yellow('Initializing product cache'))
 
 mut product_cache := util.get_all_products() ?
-mut iteration := 0
+// mut iteration := 0
 
 println(term.green('Initialized product cache'))
 
-for {
-	time.sleep(freq * 1000 * time.millisecond)
-	iteration++
+product := product_cache[0]
+println(product)
 
-	println(term.yellow('Requesting products [i: $iteration]'))
-}
+println(util.get_product(product.id))
 
-println(product_cache)
+// for {
+// 	time.sleep(freq * 1000 * time.millisecond)
+// 	iteration++
+
+// 	println(term.yellow('Requesting products [i: $iteration]'))
+// }
+
+// println(product_cache)

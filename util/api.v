@@ -14,9 +14,10 @@ fn get_mobile_stock() ?structs.MobileStock {
 	return json.decode(structs.MobileStock, request.text) or {}
 }
 
-pub fn get_product(id string) ? {
+pub fn get_product(id int) ?structs.ProductRoot {
 	url := '$util.base_endpoint/shop/${id}.json'
 	request := http.get(url) ?
+	return json.decode(structs.ProductRoot, request.text) or {}
 }
 
 pub fn get_all_products() ?[]structs.MobileStockProduct {
