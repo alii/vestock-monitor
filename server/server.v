@@ -9,11 +9,13 @@ struct App {
 
 ['/mobile_stock.json']
 fn (mut app App) mobile_stock() vweb.Result {
+	println('Mobile Stock requested')
 	return app.json(app.mobile_stock)
 }
 
 ['/shop/:id']
 fn (mut app App) shop_product(id string) vweb.Result {
+	println('Product requested')
 	return app.json(app.product)
 }
 
