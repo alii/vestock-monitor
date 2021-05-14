@@ -1,6 +1,6 @@
 module util
 
-import structs { ProductAndCategories }
+import structs
 import net.http
 import json
 
@@ -16,11 +16,13 @@ fn get_mobile_stock() ?structs.MobileStock {
 pub fn get_all_products() ?[]structs.Product {
 	stock := get_mobile_stock() ?
 
-	mut all_products := []structs.Product{}
+	return stock.products_and_categories.tops_sweaters
 
-	$for field in ProductAndCategories.fields {
-		all_products << stock.products_and_categories.$(field.name)
-	}
+	// mut all_products := []structs.Product{}
 
-	return all_products
+	// $for field in ProductAndCategories.fields {
+	// 	all_products << stock.products_and_categories.$(field.name)
+	// }
+
+	// return all_products
 }
