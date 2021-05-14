@@ -21,6 +21,5 @@ pub fn get_all_products() ?[]structs.Product {
 	$for field in ProductAndCategories.fields {
 		all_products << stock.products_and_categories.$(field.name)
 	}
-
 	return all_products
 }
