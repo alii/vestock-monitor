@@ -34,5 +34,18 @@ pub:
 	sweatshirts   []MobileStockProduct [json: 'Sweatshirts']
 	shorts        []MobileStockProduct [json: 'Shorts']
 	shirts        []MobileStockProduct [json: 'Shirts']
-	new           []MobileStockProduct [json: 'new']
+	new_products  []MobileStockProduct [json: 'new']
+}
+
+// See :  https://discord.com/channels/592103645835821068/592114487759470596/843154776153915482
+// in  :  discord.gg/vlang
+
+pub fn pc_field_values(pc ProductAndCategories) []MobileStockProduct {
+	mut res := []MobileStockProduct{}
+	$for f in ProductAndCategories.fields {
+		$if f.typ is []MobileStockProduct {
+			res << pc.$(f.name)
+		}
+	}
+	return res
 }

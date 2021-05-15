@@ -30,11 +30,5 @@ pub fn get_product(id int) ?structs.ProductRoot {
 
 pub fn get_all_products() ?[]structs.MobileStockProduct {
 	stock := get_mobile_stock() ?
-
-	mut all_products := []structs.MobileStockProduct{}
-
-	$for field in ProductAndCategories.fields {
-		all_products << stock.products_and_categories.$(field.name)
-	}
-	return all_products
+	return structs.pc_field_values(stock.products_and_categories)
 }
