@@ -37,9 +37,8 @@ pub:
 	new_products  []MobileStockProduct [json: 'new']
 }
 
-// See :  https://discord.com/channels/592103645835821068/592114487759470596/843154776153915482
-// in  :  discord.gg/vlang
-
+// See: https://discord.com/channels/592103645835821068/592114487759470596/843154776153915482
+//      discord.gg/vlang
 pub fn pc_field_values(pc ProductAndCategories) []MobileStockProduct {
 	mut res := []MobileStockProduct{}
 	$for f in ProductAndCategories.fields {
