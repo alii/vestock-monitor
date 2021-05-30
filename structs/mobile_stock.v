@@ -41,10 +41,12 @@ pub:
 //      discord.gg/vlang
 pub fn pc_field_values(pc ProductAndCategories) []MobileStockProduct {
 	mut res := []MobileStockProduct{}
+
 	$for f in ProductAndCategories.fields {
 		$if f.typ is []MobileStockProduct {
 			res << pc.$(f.name)
 		}
 	}
+
 	return res
 }
