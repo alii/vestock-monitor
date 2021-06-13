@@ -28,7 +28,7 @@ for {
 		continue
 	}
 
-	util.send_webhook(util.compare_product_caches(products, product_cache))
+	go util.send_webhook(util.compare_product_caches(products, product_cache))
 
 	product_cache = products.clone()
 }
