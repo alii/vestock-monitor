@@ -1,12 +1,14 @@
 import util
 import time
 import term
+import zztkm.vdotenv
 
 const (
 	// The frequency in seconds to request product at
 	freq = 5
 )
 
+vdotenv.load()
 println(term.yellow('Initializing product cache'))
 
 mut product_cache := util.get_all_products() ?
@@ -26,9 +28,9 @@ for {
 		continue
 	}
 
-	for product in products {
-		println(product.id)
-	}
+	util.send_webhook(util.compare_product_caches(products, product_cache))
+
+	product_cache = products.clone()
 }
 
 println(product_cache)
