@@ -47,6 +47,5 @@ pub fn pc_field_values(pc ProductAndCategories) []MobileStockProduct {
 			res << pc.$(f.name)
 		}
 	}
-
 	return res
 }
