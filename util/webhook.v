@@ -27,7 +27,8 @@ pub fn send_webhook(products []structs.MobileStockProduct) {
 			embeds: []
 		})
 
-		http.fetch(url, http.FetchConfig{
+		http.fetch(http.FetchConfig{
+			url: url,
 			method: .post
 			data: body
 			header: http.new_header(

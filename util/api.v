@@ -16,14 +16,22 @@ const (
 
 fn get_mobile_stock() ?structs.MobileStock {
 	url := '$util.base_endpoint/mobile_stock.json'
-	request := http.fetch(url, util.http_config) ?
+
+	request := http.fetch(http.FetchConfig{
+		...util.http_config
+		url: url
+	}) ?
 
 	return json.decode(structs.MobileStock, request.text) or {}
 }
 
 pub fn get_product(id int) ?structs.ProductRoot {
 	url := '$util.base_endpoint/shop/${id}.json'
-	request := http.fetch(url, util.http_config) ?
+
+	request := http.fetch(http.FetchConfig{
+		...util.http_config
+		url: url
+	}) ?
 
 	return json.decode(structs.ProductRoot, request.text) or {}
 }

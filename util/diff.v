@@ -12,7 +12,7 @@ pub fn compare_product_caches(new_products []structs.MobileStockProduct, old_pro
 			restocked_products << new_product
 			continue
 		}
-	}
+	} 
 
 	return restocked_products
 }
