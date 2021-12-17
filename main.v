@@ -8,29 +8,31 @@ const (
 	freq = 5
 )
 
-vdotenv.load()
-println(term.yellow('Initializing product cache'))
+fn main() {
+	vdotenv.load()
+	println(term.yellow('Initializing product cache'))
 
-mut product_cache := util.get_all_products() ?
-mut iteration := 0
+	mut product_cache := util.get_all_products() ?
+	mut iteration := 0
 
-println(term.green('Initialized product cache'))
+	println(term.green('Initialized product cache'))
 
-for {
-	time.sleep(freq * 1000 * time.millisecond)
-	iteration++
+	for {
+		time.sleep(freq * 1000 * time.millisecond)
+		iteration++
 
-	println(term.yellow('Requesting products [i: $iteration]'))
+		println(term.yellow('Requesting products [i: $iteration]'))
 
-	products := util.get_all_products() ?
+		products := util.get_all_products() ?
 
-	if products.len == 0 {
-		continue
+		if products.len == 0 {
+			continue
+		}
+
+		go util.send_webhook(util.compare_product_caches(products, product_cache))
+
+		product_cache = products.clone()
 	}
 
-	go util.send_webhook(util.compare_product_caches(products, product_cache))
-
-	product_cache = products.clone()
+	println(product_cache)
 }
-
-println(product_cache)

@@ -2,3 +2,4 @@ vls.log
 .DS_store
 .env
 bin
+main
